@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Books Section</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #0077cc; /* Blue background */
+    }
+
+    .hero {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      height: 100vh;
+      padding: 2rem;
+      position: relative;
+      background: #0077cc; /* Blue background */
+    }
+
+    .hero img {
+      max-width: 400px;
+      border-radius: 12px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Sparkle animation */
+    .sparkle {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: white;
+      border-radius: 50%;
+      animation: sparkleAnim 2s infinite ease-in-out;
+    }
+
+    .sparkle:nth-child(2) { top: 20%; right: 15%; animation-delay: 0s; }
+    .sparkle:nth-child(3) { top: 50%; right: 10%; animation-delay: 0.5s; }
+    .sparkle:nth-child(4) { top: 75%; right: 20%; animation-delay: 1s; }
+
+    @keyframes sparkleAnim {
+      0%, 100% { opacity: 0; transform: scale(0.5); }
+      50% { opacity: 1; transform: scale(1.5); }
+    }
+
+    /* Arrow animation */
+    .arrow {
+      position: absolute;
+      right: 5%;
+      bottom: 10%;
+      font-size: 3rem;
+      color: white;
+      animation: bounce 1.5s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <img src="books.jpg" alt="Books">
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="arrow">➔</div>
+  </div>
+</body>
+</html>
