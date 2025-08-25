@@ -8,7 +8,7 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #5FB4F9; /* fallback background */
+      background-color: #5FB4F9;
     }
 
     .hero {
@@ -18,7 +18,7 @@
       height: 120vh;
       padding: 2rem;
       position: relative;
-      background: #5FB4F9; /* Blue background */
+      background: #5FB4F9;
     }
 
     .hero img {
@@ -38,56 +38,42 @@
       animation: sparkleAnim 2s infinite ease-in-out;
     }
 
-    .sparkle:nth-child(1) { top: 20%; right: 15%; animation-delay: 0s; }
-    .sparkle:nth-child(2) { top: 50%; right: 10%; animation-delay: 0.5s; }
-    .sparkle:nth-child(3) { top: 75%; right: 20%; animation-delay: 1s; }
-    .sparkle:nth-child(4) { top: 90%; right: 85%; animation-delay: 0s; }
-    .sparkle:nth-child(5) { top: 50%; right: 80%; animation-delay: 0.5s; }
+    .sparkle:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+    .sparkle:nth-child(2) { top: 50%; left: 15%; animation-delay: 0.5s; }
+    .sparkle:nth-child(3) { top: 75%; left: 20%; animation-delay: 1s; }
+    .sparkle:nth-child(4) { top: 30%; left: 5%;  animation-delay: 0.2s; }
+    .sparkle:nth-child(5) { top: 60%; left: 25%; animation-delay: 0.7s; }
 
     @keyframes sparkleAnim {
       0%, 100% { opacity: 0; transform: scale(0.5); }
       50% { opacity: 1; transform: scale(1.5); }
     }
 
-    /* Arrow animation */
-    /* Loopy fun arrow */
-.arrow {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 180px;
-  height: 180px;
-  z-index: 3;
-  animation: wiggle 3s infinite ease-in-out;
-}
+    /* Arrow container */
+    .arrow {
+      position: absolute;
+      left: 80%;
+      top: 50%;
+      width: 180px;
+      height: 180px;
+      transform: translate(-50%, -50%);
+      z-index: 3;
+    }
 
-@keyframes wiggle {
-  0%, 100% { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
-  50% { transform: translate(-50%, -50%) rotate(-8deg) scale(1.05); }
-}
+    /* Animate the SVG path to draw itself */
+    .arrow svg path {
+      stroke: white;
+      fill: none;
+      stroke-width: 5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 800;   /* adjust if needed */
+      stroke-dashoffset: 800;
+      animation: drawArrow 3s forwards ease-in-out;
+    }
 
-.arrow svg {
-  width: 100%;
-  height: 100%;
-  fill: none;
-  stroke: white;
-  stroke-width: 5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-dasharray: 600;
-  stroke-dashoffset: 600;
-  animation: drawArrow 3s infinite linear;
-}
-
-@keyframes drawArrow {
-  to { stroke-dashoffset: 0; }
-}
-
-
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+    @keyframes drawArrow {
+      to { stroke-dashoffset: 0; }
     }
   </style>
 </head>
@@ -103,21 +89,21 @@
     <!-- Main Image -->
     <img src="Group 5-2.png" alt="Books">
 
-    <!-- Arrow -->
+    <!-- Inline Arrow SVG -->
     <div class="arrow">
-  <svg viewBox="0 0 250 200">
-    <!-- Loopy tail + arrowhead pointing left -->
-    <path d="M230 100 
-             C180 40, 120 160, 80 100
-             C60 70, 100 40, 60 60
-             C40 70, 70 130, 40 120
-             M60 80 L40 100 L60 120" />
-  </svg>
-</div>
-
+      <svg width="309" height="181" viewBox="0 0 309 181" xmlns="http://www.w3.org/2000/svg">
+        <path d="M302 8.50004C194.4 -1.89995 141.5 66.5 141.5 66.5
+                 M141.5 66.5C141.5 66.5 130.236 109.349 141.5 129
+                 C155.764 153.885 189.421 170.981 210 151
+                 C226.251 135.222 221.264 112.651 210 93
+                 C195.736 68.1151 141.5 66.5 141.5 66.5
+                 Z
+                 M141.5 66.5C141.5 66.5 81.2908 66.4329 62.5 93
+                 C44.121 118.985 44.121 148.515 62.5 174.5
+                 M62.5 174.5C40.8259 165.323 28.6741 160.177 7 151
+                 M62.5 174.5C75.7778 154.974 83.2222 144.026 96.5 124.5"/>
+      </svg>
+    </div>
   </div>
 </body>
 </html>
-
-
-ive added an vector with in the same file named arrow.svg add the animation to that 
