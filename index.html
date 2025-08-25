@@ -8,12 +8,12 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #00000; /* Blue background */
+      background-color: #5FB4F9; /* fallback background */
     }
 
     .hero {
       display: flex;
-      justify-content: flex-end;
+      justify-content: center;
       align-items: center;
       height: 120vh;
       padding: 2rem;
@@ -38,43 +38,71 @@
       animation: sparkleAnim 2s infinite ease-in-out;
     }
 
-    .sparkle:nth-child(2) { top: 20%; right: 15%; animation-delay: 0s; }
-    .sparkle:nth-child(3) { top: 50%; right: 10%; animation-delay: 0.5s; }
-    .sparkle:nth-child(4) { top: 75%; right: 20%; animation-delay: 1s; }
-    .sparkle:nth-child(5) { top: 90%; right: 85%; animation-delay: 0s; }
-    .sparkle:nth-child(6) { top: 50%; right: 80%; animation-delay: 0.5s; }
+    .sparkle:nth-child(1) { top: 20%; right: 15%; animation-delay: 0s; }
+    .sparkle:nth-child(2) { top: 50%; right: 10%; animation-delay: 0.5s; }
+    .sparkle:nth-child(3) { top: 75%; right: 20%; animation-delay: 1s; }
+    .sparkle:nth-child(4) { top: 90%; right: 85%; animation-delay: 0s; }
+    .sparkle:nth-child(5) { top: 50%; right: 80%; animation-delay: 0.5s; }
 
-    
     @keyframes sparkleAnim {
       0%, 100% { opacity: 0; transform: scale(0.5); }
       50% { opacity: 1; transform: scale(1.5); }
     }
 
-    /* Arrow animation */
-     /* .arrow {
+    /* Loopy fun arrow */
+    .arrow {
       position: absolute;
-      right: 5%;
-      bottom: 10%;
-      font-size: 3rem;
-      color: white;
-      animation: bounce 1.5s infinite;
-    }*/
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 150px;
+      height: 150px;
+      z-index: 3;
+      animation: loopArrow 3s infinite ease-in-out;
+    }
 
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+    @keyframes loopArrow {
+      0%, 100% { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
+      50% { transform: translate(-50%, -50%) rotate(-10deg) scale(1.1); }
+    }
+
+    .arrow svg {
+      width: 100%;
+      height: 100%;
+      fill: none;
+      stroke: white;
+      stroke-width: 5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 400;
+      stroke-dashoffset: 400;
+      animation: drawArrow 2s infinite linear;
+    }
+
+    @keyframes drawArrow {
+      to { stroke-dashoffset: 0; }
     }
   </style>
 </head>
 <body>
   <div class="hero">
+    <!-- Sparkles -->
     <div class="sparkle"></div>
     <div class="sparkle"></div>
-    <div class="sparkle"></div>    <img src="Group 5-2.png" alt="Books">
     <div class="sparkle"></div>
     <div class="sparkle"></div>
     <div class="sparkle"></div>
-    <div class="arrow">➔</div>
+    
+    <!-- Main Image -->
+    <img src="Group 5-2.png" alt="Books">
+
+    <!-- Loopy Arrow (pointing left) -->
+    <div class="arrow">
+      <svg viewBox="0 0 200 200">
+        <path d="M180 100 C140 40, 60 40, 20 100 
+                 M40 80 L20 100 L40 120" />
+      </svg>
+    </div>
   </div>
 </body>
 </html>
