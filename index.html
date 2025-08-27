@@ -57,7 +57,7 @@
     /* Arrow */
     .arrow {
       position: absolute;
-      left: 25%;
+      left: 55%;
       top: 45%;
       width: 20vw;   /* responsive scaling */
       max-width: 150px;
@@ -74,7 +74,7 @@
     .arrow svg path {
       stroke: #ff4fa3; /* pink arrow */
       fill: none;
-      stroke-width: 8; /* thicker line */
+      stroke-width: 12; /* much thicker line */
       stroke-linecap: round;
       stroke-linejoin: round;
       stroke-dasharray: 800;
@@ -94,6 +94,7 @@
       z-index: 5;
       width: 200px;
       height: 280px; /* taller like a book */
+      transform: rotate(-3deg); /* slight slant */
     }
 
     .mags .card {
@@ -101,9 +102,9 @@
       height: 100%;
       padding: 1.5rem;
       border-radius: 12px;
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.3);
+      background: rgba(255, 255, 255, 0.85); /* more opaque */
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
       box-shadow: 0 12px 30px rgba(0,0,0,0.25);
       text-align: center;
       display: flex;
@@ -115,23 +116,24 @@
       margin: 0 0 1.2rem;
       font-size: 1.2rem;
       font-weight: bold;
-      color: white;
+      color: #222;
     }
 
     .mags .card a {
       display: inline-block;
       padding: 0.7rem 1.2rem;
-      background: #ff4fa3;
-      color: white;
+      background: #FFD700; /* vibrant yellow */
+      color: #222;
       font-size: 1rem;
       font-weight: bold;
       border-radius: 8px;
       text-decoration: none;
-      transition: background 0.3s ease;
+      transition: background 0.3s ease, transform 0.2s ease;
     }
 
     .mags .card a:hover {
-      background: #d93b87;
+      background: #e6c200;
+      transform: scale(1.05);
     }
 
     /* Responsive tweaks */
@@ -155,7 +157,7 @@
       .mags {
         left: 50%;
         bottom: 5%;
-        transform: translateX(-50%);
+        transform: translateX(-50%) rotate(-2deg);
         width: 160px;
         height: 220px;
       }
@@ -190,15 +192,14 @@
     <!-- Main Image (sticky right) -->
     <img src="Group 5-2.png" alt="Books">
     
-    <!-- Arrow -->
-    <div class="arrow">
-      <svg viewBox="0 0 309 181" xmlns="http://www.w3.org/2000/svg">
-        <path d="M302 8.50004C194.4 -1.89995 141.5 66.5 141.5 66.5M141.5 66.5C141.5 66.5 130.236 109.349 141.5 129C155.764 153.885 189.421 170.981 210 151C226.251 135.222 221.264 112.651 210 93C195.736 68.1151 141.5 66.5 141.5 66.5ZM141.5 66.5C141.5 66.5 81.2908 66.4329 62.5 93C44.121 118.985 44.121 148.515 62.5 174.5M62.5 174.5C40.8259 165.323 28.6741 160.177 7 151M62.5 174.5C75.7778 154.974 83.2222 144.026 96.5 124.5"/>
-      </svg>
-    </div>
-
     <!-- Booknotes Glass Card -->
     <div class="mags">
+      <!-- Arrow -->
+      <div class="arrow">
+        <svg viewBox="0 0 309 181" xmlns="http://www.w3.org/2000/svg">
+          <path d="M302 8.50004C194.4 -1.89995 141.5 66.5 141.5 66.5M141.5 66.5C141.5 66.5 130.236 109.349 141.5 129C155.764 153.885 189.421 170.981 210 151C226.251 135.222 221.264 112.651 210 93C195.736 68.1151 141.5 66.5 141.5 66.5ZM141.5 66.5C141.5 66.5 81.2908 66.4329 62.5 93C44.121 118.985 44.121 148.515 62.5 174.5M62.5 174.5C40.8259 165.323 28.6741 160.177 7 151M62.5 174.5C75.7778 154.974 83.2222 144.026 96.5 124.5"/>
+        </svg>
+      </div>
       <div class="card">
         <h2>Get Your Booknotes Now!</h2>
         <a href="https://www.thinkabled.com/book-notes" target="_blank">
