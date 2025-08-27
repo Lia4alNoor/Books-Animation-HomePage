@@ -11,6 +11,8 @@
       background: rgba(255, 255, 255, 0.95); /* transparent white */
     }
   .bg{
+      position:absolute;
+      z-index:0;
       background: #5FB4F9;  /*light blue*/
       border-radius: 40px; /* very rounded edges */
      height: 100vh;
@@ -21,9 +23,8 @@
       display: flex;
       justify-content: flex-end;
       align-items: center;
-     
       position: relative;
-     
+     z-index:1;
       box-sizing: border-box;
       overflow: hidden;
     }
@@ -45,6 +46,7 @@
       background: white;
       transform: rotate(45deg); /* diamond shape */
       animation: sparkleAnim 2s infinite ease-in-out;
+      z-index:3;
     }
 
     .sparkle:nth-child(1) { top: 15%; left: 8%; animation-delay: 0s; }
