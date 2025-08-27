@@ -24,13 +24,13 @@
     }
 
     .hero img {
-      width: 40%;
+      width: 58%;
       height: auto;
       max-height: 100vh;
       position: relative;
       z-index: 2;
       object-fit: cover;
-      /* slight zoom effect top-bottom cropped */
+      border-radius: 0; /* removed border radius */
     }
 
     /* Sparkle animation */
@@ -59,9 +59,9 @@
       position: absolute;
       left: 130%;
       top: -16%;
-      width: 20vw;   /* responsive scaling */
-      max-width: 150px;
-      min-width: 70px;
+      width: 25vw;   /* made bigger */
+      max-width: 220px;
+      min-width: 90px;
       transform: translate(-50%, -50%);
       z-index: 3;
     }
@@ -72,18 +72,13 @@
     }
 
     .arrow svg path {
-      stroke: #ff7abf; /* lighter pink arrow */
+      stroke: #ff9acc; /* lighter pink */
       fill: none;
-      stroke-width: 12; /* thick line */
+      stroke-width: 16; /* thicker */
       stroke-linecap: round;
       stroke-linejoin: round;
-      stroke-dasharray: 800;
-      stroke-dashoffset: 800;
-      animation: drawArrow 3s forwards ease-in-out;
-    }
-
-    @keyframes drawArrow {
-      to { stroke-dashoffset: 0; }
+      stroke-dasharray: none;  /* removed animation */
+      stroke-dashoffset: 0;    /* removed animation */
     }
 
     /* Book-like Glassy Card */
@@ -110,6 +105,12 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .mags .card:hover {
+      transform: translateY(-8px) scale(1.03); /* subtle float */
+      box-shadow: 0 0 25px rgba(255,255,255,0.8); /* glowing white shadow */
     }
 
     .mags .card h2 {
@@ -158,8 +159,8 @@
         left: 50%;
         bottom: 5%;
         transform: translateX(-50%) rotate(-2deg);
-        width: 200px;
-        height: 280px;
+        width: 25%;
+        height: 70%;
       }
     }
 
