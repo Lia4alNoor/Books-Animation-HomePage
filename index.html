@@ -13,7 +13,7 @@
 
     .hero {
       display: flex;
-      justify-content: center;
+      justify-content: flex-end; /* push image to right side */
       align-items: center;
       height: 100vh; /* Fill iframe height */
       padding: 1rem;
@@ -132,10 +132,11 @@
     @media (max-width: 768px) {
       .hero {
         flex-direction: column;
+        justify-content: center;
       }
 
       .hero img {
-        width: 60%; /* slightly bigger on tablets */
+        width: 60%; /* bigger on tablets */
         margin-bottom: 1rem;
       }
 
@@ -154,11 +155,11 @@
 
     @media (max-width: 480px) {
       .hero img {
-        width: 80%; /* full focus on mobile */
+        width: 80%;
       }
 
       .arrow {
-        display: none; /* hide arrow on very small screens */
+        display: none;
       }
 
       .mags {
@@ -176,7 +177,7 @@
     <div class="sparkle"></div>
     <div class="sparkle"></div>
     
-    <!-- Main Image -->
+    <!-- Main Image (sticky right) -->
     <img src="Group 5-2.png" alt="Books">
     
     <!-- Inline Arrow SVG -->
