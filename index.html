@@ -13,9 +13,9 @@
 
     .hero {
       display: flex;
-      justify-content: flex-end; /* push image to right side */
+      justify-content: flex-end; /* image sticks right */
       align-items: center;
-      height: 100vh; /* Fill iframe height */
+      height: 100vh;
       padding: 1rem;
       position: relative;
       background: #5FB4F9;
@@ -54,14 +54,14 @@
       50% { opacity: 1; transform: scale(1.5); }
     }
 
-    /* Arrow container */
+    /* Arrow */
     .arrow {
       position: absolute;
       left: 25%;
       top: 45%;
-      width: 18vw;   /* responsive scaling */
-      max-width: 120px;
-      min-width: 60px;
+      width: 20vw;   /* responsive scaling */
+      max-width: 150px;
+      min-width: 70px;
       transform: translate(-50%, -50%);
       z-index: 3;
     }
@@ -71,11 +71,10 @@
       height: auto;
     }
 
-    /* Animate the SVG path to draw itself */
     .arrow svg path {
-      stroke: white;
+      stroke: #ff4fa3; /* pink arrow */
       fill: none;
-      stroke-width: 5;
+      stroke-width: 8; /* thicker line */
       stroke-linecap: round;
       stroke-linejoin: round;
       stroke-dasharray: 800;
@@ -87,35 +86,42 @@
       to { stroke-dashoffset: 0; }
     }
 
-    /* Booknotes Card */
+    /* Book-like Glassy Card */
     .mags {
       position: absolute;
       left: 10%;
-      bottom: 12%;
+      bottom: 15%;
       z-index: 5;
-      max-width: 300px;
-      width: 80%;
+      width: 200px;
+      height: 280px; /* taller like a book */
     }
 
     .mags .card {
-      background: white;
-      padding: 1.2rem 1.5rem;
-      border-radius: 16px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      width: 100%;
+      height: 100%;
+      padding: 1.5rem;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.25);
       text-align: center;
-      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     .mags .card h2 {
-      margin: 0 0 1rem;
+      margin: 0 0 1.2rem;
       font-size: 1.2rem;
-      color: #333;
+      font-weight: bold;
+      color: white;
     }
 
     .mags .card a {
       display: inline-block;
       padding: 0.7rem 1.2rem;
-      background: #5FB4F9;
+      background: #ff4fa3;
       color: white;
       font-size: 1rem;
       font-weight: bold;
@@ -125,7 +131,7 @@
     }
 
     .mags .card a:hover {
-      background: #4893d1;
+      background: #d93b87;
     }
 
     /* Responsive tweaks */
@@ -136,20 +142,22 @@
       }
 
       .hero img {
-        width: 60%; /* bigger on tablets */
+        width: 60%;
         margin-bottom: 1rem;
       }
 
       .arrow {
         left: 50%;
         top: 25%;
-        width: 20vw;
+        width: 25vw;
       }
 
       .mags {
         left: 50%;
         bottom: 5%;
         transform: translateX(-50%);
+        width: 160px;
+        height: 220px;
       }
     }
 
@@ -164,6 +172,8 @@
 
       .mags {
         bottom: 3%;
+        width: 140px;
+        height: 200px;
       }
     }
   </style>
@@ -180,14 +190,14 @@
     <!-- Main Image (sticky right) -->
     <img src="Group 5-2.png" alt="Books">
     
-    <!-- Inline Arrow SVG -->
+    <!-- Arrow -->
     <div class="arrow">
-      <svg viewBox="0 0 309 181" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg viewBox="0 0 309 181" xmlns="http://www.w3.org/2000/svg">
         <path d="M302 8.50004C194.4 -1.89995 141.5 66.5 141.5 66.5M141.5 66.5C141.5 66.5 130.236 109.349 141.5 129C155.764 153.885 189.421 170.981 210 151C226.251 135.222 221.264 112.651 210 93C195.736 68.1151 141.5 66.5 141.5 66.5ZM141.5 66.5C141.5 66.5 81.2908 66.4329 62.5 93C44.121 118.985 44.121 148.515 62.5 174.5M62.5 174.5C40.8259 165.323 28.6741 160.177 7 151M62.5 174.5C75.7778 154.974 83.2222 144.026 96.5 124.5"/>
       </svg>
     </div>
 
-    <!-- Booknotes Card -->
+    <!-- Booknotes Glass Card -->
     <div class="mags">
       <div class="card">
         <h2>Get Your Booknotes Now!</h2>
