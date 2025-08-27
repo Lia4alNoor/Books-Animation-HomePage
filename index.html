@@ -1,212 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Books Section</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #5FB4F9;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books Section</title>
+    <style>
+       /* === Base Styles === */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: rgba(255, 255, 255, 0.95); /* Transparent white */
+}
 
-    .hero {
-      display: flex;
-      justify-content: flex-end; /* image sticks right */
-      align-items: center;
-      height: 100vh;
-      padding: 1rem;
-      position: relative;
-      background: #5FB4F9;
-      box-sizing: border-box;
-      overflow: hidden;
-    }
+/* === Background Box === */
+.bg {
+  position: absolute;
+  z-index: 0;
+  background: #5FB4F9; /* Light blue */
+  border-radius: 40px; /* Rounded edges */
+  height: 99vh;
+  width: 100%;
+  padding: 1rem;
+}
 
-    .hero img {
-      width: 58%;
-      height: auto;
-      max-height: 100vh;
-      position: relative;
-      z-index: 2;
-      object-fit: cover;
-      border-radius: 0; /* no rounded edges */
-    }
+/* === Hero Section === */
+.hero {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  overflow: hidden;
+}
 
-    /* Sparkle animation */
-    .sparkle {
-      position: absolute;
-      width: 8px;
-      height: 8px;
-      background: white;
-      border-radius: 50%;
-      animation: sparkleAnim 2s infinite ease-in-out;
-    }
+.hero img {
+  width: 58%;
+  height: auto;
+  max-height: 100vh;
+  position: relative;
+  z-index: 2;
+  object-fit: cover;
+}
 
-    .sparkle:nth-child(1) { top: 15%; left: 8%; animation-delay: 0s; }
-    .sparkle:nth-child(2) { top: 45%; left: 12%; animation-delay: 0.5s; }
-    .sparkle:nth-child(3) { top: 70%; left: 18%; animation-delay: 1s; }
-    .sparkle:nth-child(4) { top: 25%; left: 5%;  animation-delay: 0.2s; }
-    .sparkle:nth-child(5) { top: 55%; left: 22%; animation-delay: 0.7s; }
+/* === Diamond Sparkle Animation === */
+.sparkle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: white;
+  transform: rotate(45deg); /* Diamond shape */
+  animation: sparkleAnim 2s infinite ease-in-out;
+  z-index: 3;
+}
 
-    @keyframes sparkleAnim {
-      0%, 100% { opacity: 0; transform: scale(0.5); }
-      50% { opacity: 1; transform: scale(1.5); }
-    }
+.sparkle:nth-child(1) { top: 15%; left: 8%; animation-delay: 0s; }
+.sparkle:nth-child(2) { top: 40%; left: 15%; animation-delay: 0.5s; }
+.sparkle:nth-child(3) { top: 70%; left: 25%; animation-delay: 1s; }
+.sparkle:nth-child(4) { top: 30%; left: 5%; animation-delay: 0.2s; }
+.sparkle:nth-child(5) { top: 60%; left: 22%; animation-delay: 0.7s; }
+.sparkle:nth-child(6) { top: 80%; left: 10%; animation-delay: 1.2s; }
+.sparkle:nth-child(7) { top: 20%; left: 30%; animation-delay: 1.5s; }
 
-    /* Arrow */
-    .arrow {
-      position: absolute;
-      left: 130%;
-      top: -16%;
-      width: 35vw;   /* bigger width */
-      max-width: 350px;
-      min-width: 150px;
-      transform: translate(-50%, -50%);
-      z-index: 3;
-      overflow: visible;
-    }
+@keyframes sparkleAnim {
+  0%, 100% {
+    opacity: 0;
+    transform: rotate(45deg) scale(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: rotate(45deg) scale(1.5);
+  }
+}
 
-    .arrow svg {
-      width: 100%;
-      height: auto;
-      overflow: visible;
-      preserveAspectRatio="xMidYMid meet";
-    }
+/* === Floating Arrow === */
+.arrow {
+  position: absolute;
+  left: 125%;       /* keeps it more inside viewport */
+  top: -10%;        /* adjust vertical placement */
+  width: 28vw;      /* responsive scaling */
+  max-width: 250px;
+  min-width: 100px;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  animation: floatArrow 3s ease-in-out infinite;
+  overflow: visible; /* prevents cropping */
+}
 
-    .arrow svg path {
-      stroke: #ff9acb; /* lighter pink */
-      fill: none;
-      stroke-width: 18; /* thicker */
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
+@keyframes floatArrow {
+  0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+  50%      { transform: translate(-50%, -50%) translateY(-12px); }
+}
 
-    /* Book-like Glassy Card */
-    .mags {
-      position: absolute;
-      left: 20%;  
-      bottom: 12%;
-      z-index: 5;
-      width: 360px;   /* larger size, ratio kept */
-      aspect-ratio: 260 / 360; 
-      transform: rotate(-3deg);
-    }
+.arrow svg {
+  width: 100%;
+  height: auto;
+}
 
-    .mags .card {
-      width: 100%;
-      height: 100%;
-      padding: 1.8rem;
-      border-radius: 0; /* square card */
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(6px);
-      border: 1px solid rgba(255, 255, 255, 0.5);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.25);
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+.arrow svg path {
+  stroke: #ff9acd;   /* lighter pink */
+  fill: none;
+  stroke-width: 18;  /* thicker */
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
 
-    .mags .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 45px rgba(255,255,255,0.6);
-    }
+/* === Book-like Sleek Black Card === */
+.mags {
+  position: absolute;
+  left: 10%;
+  top: 50%;
+  z-index: 5;
+  width: 390px;
+  height: 540px; /* keeps aspect ratio */
+  transform: rotate(-3deg);
+}
 
-    .mags .card h2 {
-      margin: 0 0 1.5rem;
-      font-size: 1.4rem;
-      font-weight: bold;
-      color: #222;
-    }
+.mags .card {
+  width: 100%;
+  height: 100%;
+  padding: 1.8rem;
+  border-radius: 16px;
+  background: #111; /* Sleek black */
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
 
-    .mags .card a {
-      display: inline-block;
-      padding: 0.9rem 1.4rem;
-      background: #FFD700;
-      color: #222;
-      font-size: 1.1rem;
-      font-weight: bold;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: background 0.3s ease, transform 0.2s ease;
-    }
+.mags .card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
+}
 
-    .mags .card a:hover {
-      background: #e6c200;
-      transform: scale(1.05);
-    }
+.mags .card h2 {
+  margin: 0 0 1.5rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #fff; /* White text */
+}
 
-    /* Responsive tweaks */
-    @media (max-width: 768px) {
-      .hero {
-        flex-direction: column;
-        justify-content: center;
-      }
+.mags .card a {
+  display: inline-block;
+  padding: 0.9rem 1.4rem;
+  background: #FFD700; /* Vibrant yellow */
+  color: #111;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
 
-      .hero img {
-        width: 60%;
-        margin-bottom: 1rem;
-      }
+.mags .card a:hover {
+  background: #e6c200;
+  transform: scale(1.05);
+}
 
-      .arrow {
-        left: 50%;
-        top: 25%;
-        width: 50vw;
-      }
+/* === Responsive Tweaks === */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .hero img {
+    width: 60%;
+    margin-bottom: 1rem;
+  }
+  .arrow {
+    left: 50%;
+    top: 25%;
+    width: 25vw;
+  }
+  .mags {
+    left: 50%;
+    bottom: 5%;
+    transform: translateX(-50%) rotate(-2deg);
+    width: 200px;
+    height: 280px;
+  }
+}
 
-      .mags {
-        left: 50%;
-        bottom: 5%;
-        transform: translateX(-50%) rotate(-2deg);
-        width: 260px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .hero img {
-        width: 80%;
-      }
-
-      .arrow {
-        display: none;
-      }
-
-      .mags {
-        bottom: 3%;
-        width: 200px;
-      }
-    }
-  </style>
+@media (max-width: 480px) {
+  .hero img {
+    width: 80%;
+  }
+  .arrow {
+    display: none;
+  }
+  .mags {
+    bottom: 3%;
+    width: 160px;
+    height: 220px;
+  }
+}
+   </style>
 </head>
+
 <body>
-  <div class="hero">
-    <!-- Sparkles -->
-    <div class="sparkle"></div>
-    <div class="sparkle"></div>
-    <div class="sparkle"></div>
-    <div class="sparkle"></div>
-    <div class="sparkle"></div>
-    
-    <!-- Main Image (sticky right) -->
-    <img src="Group 5-2.png" alt="Books">
-    
+    <div class="bg"></div>
+    <div class="hero">
+        <!-- Diamond Sparkles -->
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <!-- Main Image (sticky right) --><img src="Group 5-2.png" alt="Books"> </div>
     <!-- Booknotes Glass Card -->
     <div class="mags">
-      <!-- Arrow -->
-      <div class="arrow">
-        <svg viewBox="0 0 309 181" xmlns="http://www.w3.org/2000/svg">
-          <path d="M302 8.50004C194.4 -1.89995 141.5 66.5 141.5 66.5M141.5 66.5C141.5 66.5 130.236 109.349 141.5 129C155.764 153.885 189.421 170.981 210 151C226.251 135.222 221.264 112.651 210 93C195.736 68.1151 141.5 66.5 141.5 66.5ZM141.5 66.5C141.5 66.5 81.2908 66.4329 62.5 93C44.121 118.985 44.121 148.515 62.5 174.5M62.5 174.5C40.8259 165.323 28.6741 160.177 7 151M62.5 174.5C75.7778 154.974 83.2222 144.026 96.5 124.5"/>
-        </svg>
-      </div>
-      <div class="card">
-        <h2>Get Your Booknotes Now!</h2>
-        <a href="https://www.thinkabled.com/book-notes" target="_blank">
-          Explore Notes
-        </a>
-      </div>
+        <!-- Arrow -->
+        <div class="arrow">
+            <svg viewBox="0 0 309 181" xmlns="http://www.w3.org/2000/svg">
+                <path d="M302 8.50004C194.4 -1.89995 141.5 66.5 141.5 66.5M141.5 66.5C141.5 66.5 130.236 109.349 141.5 129C155.764 153.885 189.421 170.981 210 151C226.251 135.222 221.264 112.651 210 93C195.736 68.1151 141.5 66.5 141.5 66.5ZM141.5 66.5C141.5 66.5 81.2908 66.4329 62.5 93C44.121 118.985 44.121 148.515 62.5 174.5M62.5 174.5C40.8259 165.323 28.6741 160.177 7 151M62.5 174.5C75.7778 154.974 83.2222 144.026 96.5 124.5"
+                /> </svg>
+        </div>
+        <div class="card">
+            <h2>Grab Your Booknotes Now!</h2> <a href="https://www.thinkabled.com/book-notes" target="_blank"> Explore Books! </a> </div>
     </div>
-  </div>
 </body>
+
 </html>
