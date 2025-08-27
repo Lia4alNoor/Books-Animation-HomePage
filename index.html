@@ -31,6 +31,7 @@
       position: relative;
       z-index: 2;
       object-fit: cover;
+      object-position: center -20px; /* slight zoom effect top-bottom cropped */
     }
 
     /* Sparkle animation */
@@ -57,9 +58,8 @@
     /* Arrow */
     .arrow {
       position: absolute;
-          left: 130%;
-    top: -16%;
-
+      left: 130%;
+      top: -16%;
       width: 20vw;   /* responsive scaling */
       max-width: 150px;
       min-width: 70px;
@@ -73,9 +73,9 @@
     }
 
     .arrow svg path {
-      stroke: #ff4fa3; /* pink arrow */
+      stroke: #ff7abf; /* lighter pink arrow */
       fill: none;
-      stroke-width: 12; /* much thicker line */
+      stroke-width: 12; /* thick line */
       stroke-linecap: round;
       stroke-linejoin: round;
       stroke-dasharray: 800;
@@ -90,23 +90,23 @@
     /* Book-like Glassy Card */
     .mags {
       position: absolute;
-      left: 10%;
-      bottom: 15%;
+      left: 20%;   /* moved more to the right */
+      bottom: 12%;
       z-index: 5;
-      width: 200px;
-      height: 280px; /* taller like a book */
+      width: 260px;   /* bigger width */
+      height: 360px;  /* bigger height */
       transform: rotate(-3deg); /* slight slant */
     }
 
     .mags .card {
       width: 100%;
       height: 100%;
-      padding: 1.5rem;
-      border-radius: 12px;
+      padding: 1.8rem;
+      border-radius: 14px;
       background: rgba(255, 255, 255, 0.85); /* more opaque */
       backdrop-filter: blur(6px);
       border: 1px solid rgba(255, 255, 255, 0.5);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.25);
       text-align: center;
       display: flex;
       flex-direction: column;
@@ -114,18 +114,18 @@
     }
 
     .mags .card h2 {
-      margin: 0 0 1.2rem;
-      font-size: 1.2rem;
+      margin: 0 0 1.5rem;
+      font-size: 1.4rem;
       font-weight: bold;
       color: #222;
     }
 
     .mags .card a {
       display: inline-block;
-      padding: 0.7rem 1.2rem;
+      padding: 0.9rem 1.4rem;
       background: #FFD700; /* vibrant yellow */
       color: #222;
-      font-size: 1rem;
+      font-size: 1.1rem;
       font-weight: bold;
       border-radius: 8px;
       text-decoration: none;
@@ -159,8 +159,8 @@
         left: 50%;
         bottom: 5%;
         transform: translateX(-50%) rotate(-2deg);
-        width: 160px;
-        height: 220px;
+        width: 200px;
+        height: 280px;
       }
     }
 
@@ -175,8 +175,8 @@
 
       .mags {
         bottom: 3%;
-        width: 140px;
-        height: 200px;
+        width: 160px;
+        height: 220px;
       }
     }
   </style>
