@@ -13,19 +13,23 @@
 
     .hero {
       display: flex;
-      justify-content: flex-end;
+      justify-content: center;
       align-items: center;
-      height: 120vh;
-      padding: 2rem;
+      height: 100vh; /* Match iframe height */
+      padding: 1rem;
       position: relative;
       background: #5FB4F9;
+      box-sizing: border-box;
     }
 
     .hero img {
-      max-width: 600px;
+      width: 100%;
+      height: auto;
+      max-width: 100%;
       border-radius: 12px;
       position: relative;
       z-index: 2;
+      object-fit: contain; /* Keeps aspect ratio */
     }
 
     /* Sparkle animation */
@@ -54,12 +58,18 @@
       position: absolute;
       left: 30%;
       top: 45%;
-      width: 80px;
-      height: 80px;
+      width: 15%;
+      max-width: 80px;
+      height: auto;
       transform: translate(-50%, -50%);
       z-index: 3;
     }
-   
+
+    .arrow svg {
+      width: 100%;
+      height: auto;
+    }
+
     /* Animate the SVG path to draw itself */
     .arrow svg path {
       stroke: white;
@@ -67,13 +77,53 @@
       stroke-width: 5;
       stroke-linecap: round;
       stroke-linejoin: round;
-      stroke-dasharray: 800;   /* adjust if needed */
+      stroke-dasharray: 800;   
       stroke-dashoffset: 800;
       animation: drawArrow 3s forwards ease-in-out;
     }
 
     @keyframes drawArrow {
       to { stroke-dashoffset: 0; }
+    }
+
+    /* Booknotes Card */
+    .mags {
+      position: absolute;
+      left: 10%;
+      bottom: 10%;
+      z-index: 5;
+    }
+
+    .mags .card {
+      background: white;
+      padding: 1.5rem 2rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      text-align: center;
+      max-width: 280px;
+      font-family: Arial, sans-serif;
+    }
+
+    .mags .card h2 {
+      margin: 0 0 1rem;
+      font-size: 1.4rem;
+      color: #333;
+    }
+
+    .mags .card a {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background: #5FB4F9;
+      color: white;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .mags .card a:hover {
+      background: #4893d1;
     }
   </style>
 </head>
@@ -89,63 +139,22 @@
     <!-- Main Image -->
     <img src="Group 5-2.png" alt="Books">
     
-
     <!-- Inline Arrow SVG -->
     <div class="arrow">
-      <svg width="309" height="181" viewBox="0 0 309 181" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M302 8.50004C194.4 -1.89995 141.5 66.5 141.5 66.5M141.5 66.5C141.5 66.5 130.236 109.349 141.5 129C155.764 153.885 189.421 170.981 210 151C226.251 135.222 221.264 112.651 210 93C195.736 68.1151 141.5 66.5 141.5 66.5ZM141.5 66.5C141.5 66.5 81.2908 66.4329 62.5 93C44.121 118.985 44.121 148.515 62.5 174.5M62.5 174.5C40.8259 165.323 28.6741 160.177 7 151M62.5 174.5C75.7778 154.974 83.2222 144.026 96.5 124.5" stroke="black" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-
+      <svg viewBox="0 0 309 181" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M302 8.50004C194.4 -1.89995 141.5 66.5 141.5 66.5M141.5 66.5C141.5 66.5 130.236 109.349 141.5 129C155.764 153.885 189.421 170.981 210 151C226.251 135.222 221.264 112.651 210 93C195.736 68.1151 141.5 66.5 141.5 66.5ZM141.5 66.5C141.5 66.5 81.2908 66.4329 62.5 93C44.121 118.985 44.121 148.515 62.5 174.5M62.5 174.5C40.8259 165.323 28.6741 160.177 7 151M62.5 174.5C75.7778 154.974 83.2222 144.026 96.5 124.5" />
+      </svg>
     </div>
 
-
-
-<div class= "mags" style ="
-      position:absolute;
-        left: 15%;
-      top: 60%;
-    "><div class="mags" style="
-  position: absolute;
-  left: 15%;
-  top: 60%;
-  z-index: 5;
-">
-  <div style="
-    background: white;
-    padding: 1.5rem 2rem;
-    border-radius: 16px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    text-align: center;
-    max-width: 280px;
-    font-family: Arial, sans-serif;
-  ">
-    <h2 style="margin: 0 0 1rem; font-size: 1.4rem; color: #333;">
-      Get Your Booknotes Now!
-    </h2>
-    <a href="https://www.thinkabled.com/book-notes" target="_blank" style="
-      display: inline-block;
-      padding: 0.75rem 1.5rem;
-      background: #5FB4F9;
-      color: white;
-      font-size: 1rem;
-      font-weight: bold;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: background 0.3s ease;
-    "
-    onmouseover="this.style.background='#4893d1'"
-    onmouseout="this.style.background='#5FB4F9'">
-      Explore Notes
-    </a>
+    <!-- Booknotes Card -->
+    <div class="mags">
+      <div class="card">
+        <h2>Get Your Booknotes Now!</h2>
+        <a href="https://www.thinkabled.com/book-notes" target="_blank">
+          Explore Notes
+        </a>
+      </div>
+    </div>
   </div>
-</div>
-
-</div>
-
-    
-  </div>
-
-
-  
 </body>
 </html>
