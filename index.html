@@ -10,16 +10,20 @@
       font-family: Arial, sans-serif;
       background: rgba(255, 255, 255, 0.95); /* transparent white */
     }
-
+  .bg{
+      background: rgb(80 165 248 / 95%); 
+      border-radius: 40px; /* very rounded edges */
+     height: 100vh;
+      padding: 1rem;
+    
+  }
     .hero {
       display: flex;
       justify-content: flex-end;
       align-items: center;
-      height: 100vh;
-      padding: 1rem;
+     
       position: relative;
-      background: rgba(255, 255, 255, 0.95); 
-      border-radius: 40px; /* very rounded edges */
+     
       box-sizing: border-box;
       overflow: hidden;
     }
@@ -189,6 +193,7 @@
 </head>
 <body>
   <div class="hero">
+    <div class="bg"></div>
     <!-- Diamond Sparkles -->
     <div class="sparkle"></div>
     <div class="sparkle"></div>
