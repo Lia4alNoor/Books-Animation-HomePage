@@ -8,25 +8,17 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: rgba(255, 255, 255, 0.95); /* transparent white */
-    }
-
-    .bg{
-      position:absolute;
-      z-index:0;
-      background: #5FB4F9; /*light blue*/
-      border-radius: 5vw; /* very rounded edges */
-      height: 99vh;
-      width:100%;
-      padding: 1rem;
+      background-color: #5FB4F9;
     }
 
     .hero {
       display: flex;
-      justify-content: flex-end;
+      justify-content: flex-end; /* image sticks right */
       align-items: center;
+      height: 100vh;
+      padding: 1rem;
       position: relative;
-      z-index:1;
+      background: #5FB4F9;
       box-sizing: border-box;
       overflow: hidden;
     }
@@ -38,73 +30,66 @@
       position: relative;
       z-index: 2;
       object-fit: cover;
+      border-radius: 0; /* no rounded edges */
     }
 
-    /* Diamond Sparkle animation */
+    /* Sparkle animation */
     .sparkle {
       position: absolute;
-      width: 1vw;
-      height: 1vw;
+      width: 8px;
+      height: 8px;
       background: white;
-      transform: rotate(45deg); /* diamond shape */
+      border-radius: 50%;
       animation: sparkleAnim 2s infinite ease-in-out;
-      z-index:3;
     }
 
     .sparkle:nth-child(1) { top: 15%; left: 8%; animation-delay: 0s; }
-    .sparkle:nth-child(2) { top: 40%; left: 15%; animation-delay: 0.5s; }
-    .sparkle:nth-child(3) { top: 70%; left: 25%; animation-delay: 1s; }
-    .sparkle:nth-child(4) { top: 30%; left: 5%; animation-delay: 0.2s; }
-    .sparkle:nth-child(5) { top: 60%; left: 22%; animation-delay: 0.7s; }
-    .sparkle:nth-child(6) { top: 80%; left: 10%; animation-delay: 1.2s; }
-    .sparkle:nth-child(7) { top: 20%; left: 30%; animation-delay: 1.5s; }
+    .sparkle:nth-child(2) { top: 45%; left: 12%; animation-delay: 0.5s; }
+    .sparkle:nth-child(3) { top: 70%; left: 18%; animation-delay: 1s; }
+    .sparkle:nth-child(4) { top: 25%; left: 5%;  animation-delay: 0.2s; }
+    .sparkle:nth-child(5) { top: 55%; left: 22%; animation-delay: 0.7s; }
 
     @keyframes sparkleAnim {
-      0%, 100% { opacity: 0; transform: rotate(45deg) scale(0.5); }
-      50% { opacity: 1; transform: rotate(45deg) scale(1.5); }
+      0%, 100% { opacity: 0; transform: scale(0.5); }
+      50% { opacity: 1; transform: scale(1.5); }
     }
 
-    /* Floating Arrow */
+    /* Arrow */
     .arrow {
       position: absolute;
       left: 130%;
       top: -16%;
-      width: 25vw;
-      max-width: 15vw;
-      min-width: 8vw;
+      width: 35vw;   /* bigger width */
+      max-width: 350px;
+      min-width: 150px;
       transform: translate(-50%, -50%);
       z-index: 3;
-      animation: floatArrow 3s ease-in-out infinite;
-    }
-
-    @keyframes floatArrow {
-      0%, 100% { transform: translate(-50%, -50%) translateY(0); }
-      50% { transform: translate(-50%, -50%) translateY(-2vh); }
+      overflow: visible;
     }
 
     .arrow svg {
       width: 100%;
       height: auto;
+      overflow: visible;
+      preserveAspectRatio="xMidYMid meet";
     }
 
     .arrow svg path {
-      stroke: #FFD700; /* Yellow */
+      stroke: #ff9acb; /* lighter pink */
       fill: none;
-      stroke-width: 1.2vw;
+      stroke-width: 18; /* thicker */
       stroke-linecap: round;
       stroke-linejoin: round;
     }
 
-    /* Book-like Sleek Black Card */
+    /* Book-like Glassy Card */
     .mags {
       position: absolute;
-      left: 10%;
-      top: 50%;
+      left: 20%;  
+      bottom: 12%;
       z-index: 5;
-      width: 20vw;
-      height: calc(20vw * 1.38); /* keep book ratio */
-      max-width: 26vw;
-      max-height: calc(26vw * 1.38);
+      width: 360px;   /* larger size, ratio kept */
+      aspect-ratio: 260 / 360; 
       transform: rotate(-3deg);
     }
 
@@ -112,38 +97,38 @@
       width: 100%;
       height: 100%;
       padding: 1.8rem;
-      border-radius: 1.2vw;
-      background: #111; /* sleek black */
-      backdrop-filter: blur(0.5vw);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      box-shadow: 0 1vw 2.5vw rgba(0,0,0,0.5);
+      border-radius: 0; /* square card */
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.25);
       text-align: center;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .mags .card:hover {
-      transform: translateY(-1vh) scale(1.03);
-      box-shadow: 0 0 2vw rgba(255,255,255,0.5);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 45px rgba(255,255,255,0.6);
     }
 
     .mags .card h2 {
       margin: 0 0 1.5rem;
-      font-size: clamp(1rem, 1.5vw, 1.6rem);
+      font-size: 1.4rem;
       font-weight: bold;
-      color: #fff; /* white text */
+      color: #222;
     }
 
     .mags .card a {
       display: inline-block;
       padding: 0.9rem 1.4rem;
-      background: #FFD700; /* vibrant yellow */
-      color: #111;
-      font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+      background: #FFD700;
+      color: #222;
+      font-size: 1.1rem;
       font-weight: bold;
-      border-radius: 0.5vw;
+      border-radius: 8px;
       text-decoration: none;
       transition: background 0.3s ease, transform 0.2s ease;
     }
@@ -159,21 +144,23 @@
         flex-direction: column;
         justify-content: center;
       }
+
       .hero img {
         width: 60%;
         margin-bottom: 1rem;
       }
+
       .arrow {
         left: 50%;
         top: 25%;
-        width: 25vw;
+        width: 50vw;
       }
+
       .mags {
         left: 50%;
         bottom: 5%;
         transform: translateX(-50%) rotate(-2deg);
-        width: 35vw;
-        height: calc(35vw * 1.38);
+        width: 260px;
       }
     }
 
@@ -181,44 +168,44 @@
       .hero img {
         width: 80%;
       }
+
       .arrow {
         display: none;
       }
+
       .mags {
         bottom: 3%;
-        width: 40vw;
-        height: calc(40vw * 1.38);
+        width: 200px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="bg"></div>
   <div class="hero">
-    <!-- Diamond Sparkles -->
+    <!-- Sparkles -->
     <div class="sparkle"></div>
     <div class="sparkle"></div>
     <div class="sparkle"></div>
     <div class="sparkle"></div>
     <div class="sparkle"></div>
-    <div class="sparkle"></div>
-    <div class="sparkle"></div>
-
+    
     <!-- Main Image (sticky right) -->
     <img src="Group 5-2.png" alt="Books">
-  </div>
-
-  <!-- Booknotes Glass Card -->
-  <div class="mags">
-    <!-- Arrow -->
-    <div class="arrow">
-      <svg viewBox="0 0 309 181" xmlns="http://www.w3.org/2000/svg">
-        <path d="M302 8.50004C194.4 -1.89995 141.5 66.5 141.5 66.5M141.5 66.5C141.5 66.5 130.236 109.349 141.5 129C155.764 153.885 189.421 170.981 210 151C226.251 135.222 221.264 112.651 210 93C195.736 68.1151 141.5 66.5 141.5 66.5ZM141.5 66.5C141.5 66.5 81.2908 66.4329 62.5 93C44.121 118.985 44.121 148.515 62.5 174.5M62.5 174.5C40.8259 165.323 28.6741 160.177 7 151M62.5 174.5C75.7778 154.974 83.2222 144.026 96.5 124.5"/>
-      </svg>
-    </div>
-    <div class="card">
-      <h2>Grab Your Booknotes Now!</h2>
-      <a href="https://www.thinkabled.com/book-notes" target="_blank"> Explore Books! </a>
+    
+    <!-- Booknotes Glass Card -->
+    <div class="mags">
+      <!-- Arrow -->
+      <div class="arrow">
+        <svg viewBox="0 0 309 181" xmlns="http://www.w3.org/2000/svg">
+          <path d="M302 8.50004C194.4 -1.89995 141.5 66.5 141.5 66.5M141.5 66.5C141.5 66.5 130.236 109.349 141.5 129C155.764 153.885 189.421 170.981 210 151C226.251 135.222 221.264 112.651 210 93C195.736 68.1151 141.5 66.5 141.5 66.5ZM141.5 66.5C141.5 66.5 81.2908 66.4329 62.5 93C44.121 118.985 44.121 148.515 62.5 174.5M62.5 174.5C40.8259 165.323 28.6741 160.177 7 151M62.5 174.5C75.7778 154.974 83.2222 144.026 96.5 124.5"/>
+        </svg>
+      </div>
+      <div class="card">
+        <h2>Get Your Booknotes Now!</h2>
+        <a href="https://www.thinkabled.com/book-notes" target="_blank">
+          Explore Notes
+        </a>
+      </div>
     </div>
   </div>
 </body>
